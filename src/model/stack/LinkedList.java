@@ -1,3 +1,7 @@
+package model.stack;
+
+import java.util.EmptyStackException;
+
 public class LinkedList<T> implements List<T>
 {
   private int size;
@@ -15,7 +19,8 @@ public class LinkedList<T> implements List<T>
 
   @Override public void addToFront(T data)
   {
-    Node<T> newNode = new Node<>(data);
+    Node<T> newNode = new Node<>();
+    newNode.setData(data);
     newNode.setNext(head);
     head = newNode;
     size++;
@@ -23,9 +28,15 @@ public class LinkedList<T> implements List<T>
 
   @Override public T removeFirst()
   {
-    T result = head.getData();
-    head = head.getNext();
-    size--;
-    return result;
+    try
+    {
+      T result = head.getData();
+      head = head.getNext();
+      size--;
+      return result;
+    }
+    catch (Exception e){
+      throw new EmptyStackException();
+    }
   }
 }
