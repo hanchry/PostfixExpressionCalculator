@@ -6,6 +6,8 @@ import model.stack.Stack;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.EmptyStackException;
+
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -75,5 +77,9 @@ public class LinkedStackTest
     assertEquals("c",linkedStack.pop());
     assertEquals("b",linkedStack.pop());
     assertEquals("a",linkedStack.pop());
+  }
+  @Test
+  void popException(){
+    assertThrows(EmptyStackException.class,() -> linkedStack.pop());
   }
 }

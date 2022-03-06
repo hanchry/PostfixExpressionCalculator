@@ -16,23 +16,29 @@ public class CalculatorVisitor implements Visitor,Calculator
   private void pushOperand(Operand operand){
     tokenStack.push(operand);
   }
-  private void performOperation(Operator operator){
-    int result = 0;
-    switch(operator.getOperation()){
-      case plus:
-        result = ((Operand) tokenStack.pop()).getValue() + ((Operand) tokenStack.pop()).getValue();
-        break;
-      case minus:
-        result = ((Operand) tokenStack.pop()).getValue() - ((Operand) tokenStack.pop()).getValue();
-        break;
-      case multiply:
-        result = ((Operand) tokenStack.pop()).getValue() * ((Operand) tokenStack.pop()).getValue();
-        break;
-      case divide:
-        result = ((Operand) tokenStack.pop()).getValue() / ((Operand) tokenStack.pop()).getValue();
-        break;
-    }
-    tokenStack.push(new Operand(result));
+
+  private void performOperation(Operator operator) {
+      int result = 0;
+
+      int two = ((Operand) tokenStack.pop()).getValue();
+      int one = ((Operand) tokenStack.pop()).getValue();
+
+      switch (operator.getOperation())
+      {
+        case plus:
+          result = one + two;
+          break;
+        case minus:
+          result = one - two;
+          break;
+        case multiply:
+          result = one * two;
+          break;
+        case divide:
+          result = one / two;
+          break;
+      }
+      tokenStack.push(new Operand(result));
   }
   @Override public int getResult() throws MalformedParametersException
   {

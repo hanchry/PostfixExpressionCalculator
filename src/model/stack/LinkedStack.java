@@ -21,14 +21,14 @@ public class LinkedStack<T> implements Stack<T>
     list.addToFront(element);
   }
 
-  @Override public T pop()
+  @Override public T pop() throws EmptyStackException
   {
-    try
-    {
+//    try
+//    {
       return list.removeFirst();
-    }
-    catch (Exception e){
-    throw new EmptyStackException();
-  }
+//    }
+//    catch (Exception e){
+//    throw new EmptyStackException();
+//  }
   }
 }
