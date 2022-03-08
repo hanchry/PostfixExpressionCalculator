@@ -23,22 +23,28 @@ public class CalculatorVisitor implements Visitor,Calculator
       int two = ((Operand) tokenStack.pop()).getValue();
       int one = ((Operand) tokenStack.pop()).getValue();
 
-      switch (operator.getOperation())
+      try
       {
-        case plus:
-          result = one + two;
-          break;
-        case minus:
-          result = one - two;
-          break;
-        case multiply:
-          result = one * two;
-          break;
-        case divide:
-          result = one / two;
-          break;
+        switch (operator.getOperation())
+        {
+          case plus:
+            result = one + two;
+            break;
+          case minus:
+            result = one - two;
+            break;
+          case multiply:
+            result = one * two;
+            break;
+          case divide:
+            result = one / two;
+            break;
+        }
+        tokenStack.push(new Operand(result));
       }
-      tokenStack.push(new Operand(result));
+      catch (Exception e){
+        throw new MalformedParametersException();
+      }
   }
   @Override public int getResult() throws MalformedParametersException
   {

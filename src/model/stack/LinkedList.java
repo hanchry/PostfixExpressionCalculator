@@ -26,7 +26,7 @@ public class LinkedList<T> implements List<T>
     size++;
   }
 
-  @Override public T removeFirst() throws EmptyStackException
+  @Override public T removeFirst()
   {
     try
     {
